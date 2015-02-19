@@ -5,6 +5,7 @@ Installs MeCab and its well-known dictionary.
 Platforms
 ---------
 The following platforms and versions are tested and supported using test-kitchen
+
 * Ubuntu 14.04
 * Debian 7.8
 * CentOS 7.0
@@ -35,6 +36,7 @@ Misc
 ----
 [GitHub Repository](http://github.com/kogecoo/chef-mecab)
 
-License
+License and Author
 -------------------
-Apache License, Version 2.0 (see [LICENSE](LICENSE))
+- Author: [kogecoo](http://github.com/kogecoo)
+- License: Apache License, Version 2.0 (see [LICENSE](LICENSE))
