@@ -1,0 +1,45 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-14.04
+  - name: centos-7.0
+  - name: debian-7.8
+
+
+suites:
+  - name: default
+    run_list:
+      - recipe[apt::default]
+      - recipe[build-essential::default]
+      - recipe[tar::default]
+      - recipe[mecab::default]
+
+  - name: ipadic
+    run_list:
+      - recipe[apt::default]
+      - recipe[build-essential::default]
+      - recipe[tar::default]
+      - recipe[mecab::ipadic]
+
+  - name: jumandic
+    run_list:
+      - recipe[apt::default]
+      - recipe[build-essential::default]
+      - recipe[tar::default]
+      - recipe[mecab::jumandic]
+
+  - name: unidic
+    run_list:
+      - recipe[apt::default]
+      - recipe[build-essential::default]
+      - recipe[tar::default]
+      - recipe[zip::default]
+      - recipe[mecab::unidic]
+
+busser:
+  sudo: false

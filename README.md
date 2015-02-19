@@ -1,0 +1,40 @@
+MeCab Chef Cookbook
+=======================
+Installs MeCab and its well-known dictionary.
+
+Platforms
+---------
+The following platforms and versions are tested and supported using test-kitchen
+* Ubuntu 14.04
+* Debian 7.8
+* CentOS 7.0
+
+Attributes
+-----
+see [source](attributes/default.rb)
+
+Recipes
+----------
+* `recipe[mecab::ipadic]` - Install MeCab and IPA Dictionary. (default)
+* `recipe[mecab::jumandic]` - Install MeCab and Juman Dictionary.
+* `recipe[mecab::unidic]` - Install MeCab and Unidic Dictionary.
+
+Usage
+-----
+Just include `mecab` in your node's `run_list`:
+
+```json
+{
+  "run_list": [
+    "recipe[mecab]"
+  ]
+}
+```
+
+Misc
+----
+[GitHub Repository](http://github.com/kogecoo/chef-mecab)
+
+License
+-------------------
+Apache License, Version 2.0 (see [LICENSE](LICENSE))
