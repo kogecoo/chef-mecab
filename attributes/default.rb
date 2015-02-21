@@ -14,7 +14,6 @@ default["mecab"] = {
     "charset"  => "utf8",
     "utf8-only" => true
   },
-  "dictionary" => "ipadic"
 }
 
 default["ipadic"] = {
