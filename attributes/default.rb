@@ -1,6 +1,7 @@
 default["dl_site"] = {
-  "mecab"  => "http://mecab.googlecode.com/files/",
-  "unidic" => "http://sourceforge.jp/frs/redir.php?m=jaist&f=%2Funidic%2F58338%2F"
+  "mecab"     => "http://mecab.googlecode.com/files/",
+  "unidic"    => "http://sourceforge.jp/frs/redir.php?m=jaist&f=%2Funidic%2F58338%2F",
+  "naistjdic" => "http://sourceforge.jp/frs/redir.php?m=iij&f=%2Fnaist-jdic%2F53500%2F"
 }
 
 default["mecab"] = {
@@ -35,5 +36,17 @@ default["unidic"] = {
   "support" => {
     "2.1.2" => { "checksum" => "547ce5824429a022d6fe368af39a106c", "checksum_type" => :MD5 },
     "2.1.1" => { "checksum" => "9609881ee9c0a1d2bbc59447077863bc", "checksum_type" => :MD5 }
+  }
+}
+
+default["naistjdic"] = {
+  "version" => "0.6.3b-20111013",
+  "support" => {
+    "0.6.3b-20111013" => { "checksum" => "52238fb14d949e49a65a9dbc1f7e382c", "checksum_type" => :MD5 },
+    "0.6.3-20100801"  => { "checksum" => "30af2251331b9d6141748caf033821e3", "checksum_type" => :MD5 },
+    "0.6.2-20100208"  => { "checksum" => "01d806a4682da610a051480d87a2c7c2", "checksum_type" => :MD5 },
+    "0.6.1-20090630"  => { "checksum" => "1a0ea25002dcf1e4b925a88e10e7d3eb", "checksum_type" => :MD5 },
+    "0.6.0-20090616"  => { "checksum" => "1babf0f548b038af9d2206e6a1615a83", "checksum_type" => :MD5 },
+    "0.5.0-20090512"  => { "checksum" => "90398f6be899178afea669928d5c5b70", "checksum_type" => :MD5 }
   }
 }

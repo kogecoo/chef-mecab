@@ -41,5 +41,14 @@ suites:
       - recipe[zip::default]
       - recipe[mecab::unidic]
 
+  - name: naistjdic
+    run_list:
+      - recipe[apt::default]
+      - recipe[build-essential::default]
+      - recipe[tar::default]
+      - recipe[zip::default]
+      - recipe[mecab::naistjdic]
+
+
 busser:
   sudo: false
