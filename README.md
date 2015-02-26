@@ -1,5 +1,8 @@
 MeCab Chef Cookbook
 =======================
+
+[![Circle CI](https://circleci.com/gh/kogecoo/chef-mecab.svg?style=svg)](https://circleci.com/gh/kogecoo/chef-mecab)
+
 Installs MeCab and its well-known dictionary.
 
 Platforms
