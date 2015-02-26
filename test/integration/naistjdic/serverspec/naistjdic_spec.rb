@@ -2,7 +2,7 @@ require 'spec_helper'
 
 prefix     = "/usr/local"
 version    = "0.996"
-dictionary = "naistjdic"
+dictionary = "naist-jdic"
 dic_path  = "#{prefix}/lib/mecab/dic/#{dictionary}/sys.dic"
 
 describe command('which mecab') do
