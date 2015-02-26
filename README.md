@@ -19,6 +19,7 @@ Recipes
 * `recipe[mecab::ipadic]` - Install MeCab and IPA Dictionary. (default)
 * `recipe[mecab::jumandic]` - Install MeCab and Juman Dictionary.
 * `recipe[mecab::unidic]` - Install MeCab and Unidic Dictionary.
+* `recipe[mecab::naistjdic]` - Install MeCab and NAIST-JDIC Dictionary.
 
 Usage
 -----
