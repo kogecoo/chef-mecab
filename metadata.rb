@@ -6,5 +6,6 @@ description      'Installs MeCab and its well-known dictionary.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.2.1'
 
-supports 'ubuntu'
+supports 'centos'
 supports 'debian'
+supports 'ubuntu'
