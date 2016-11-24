@@ -57,3 +57,24 @@ default["naistjdic"] = {
     "0.5.0-20090512"  => { "checksum" => "90398f6be899178afea669928d5c5b70", "checksum_type" => :MD5 }
   }
 }
+
+default["mecab-python"] = {
+  "version" => "0.996",
+  "prefix" => nil,
+  "python_dev_include_path" => nil,  # /path/to/Python.h
+  "python_dev_lib_path" => nil# /path/to/libpythonXX.so
+}
+
+default["mecab-java"] = {
+  "version" => "0.996",
+  "install_to" => "/usr/local/bin/mecab-java/"
+}
+
+default["mecab-perl"] = {
+  "version" => "0.996",
+  "perl_path" => nil
+}
+
+default["mecab-ruby"] = {
+  "version" => "0.996",
+}
