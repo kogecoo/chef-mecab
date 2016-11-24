@@ -11,7 +11,7 @@ copy_to = "#{Chef::Config[:file_cache_path]}/#{src_filename}"
 checksum = node['unidic']['support'][version]['checksum']
 checksum_type = node['unidic']['support'][version]['checksum_type']
 
-install_path_prefix = node["mecab"]["conf"]["prefix"]
+install_path_prefix = node["mecab"]["prefix"]
 mecabrc_path = "#{install_path_prefix}/etc/mecabrc"
 
 configure_cmd = %W{

@@ -1,33 +1,40 @@
 default["dl_site"] = {
-  "mecab"     => "http://mecab.googlecode.com/files/",
   "unidic"    => "http://sourceforge.jp/frs/redir.php?m=jaist&f=%2Funidic%2F58338%2F",
   "naistjdic" => "http://sourceforge.jp/frs/redir.php?m=iij&f=%2Fnaist-jdic%2F53500%2F"
 }
 
 default["mecab"] = {
-  "version" => "0.996",
-  "support" => {
-    "0.996" => { "checksum" => "15baca0983a61c1a49cffd4a919463a0a39ef127", "checksum_type" => :SHA1 },
-    "0.994" => { "checksum" => "9d283f9d243b1a58a2845ff60797c11a88b1f926", "checksum_type" => :SHA1 }
-  },
-  "conf" => {
-    "prefix"   => "/usr/local",
-    "charset"  => "utf8",
-    "utf8-only" => true
+  "version"   => "0.996", # or HEAD
+  "git_repos" => "https://github.com/taku910/mecab.git",
+  "prefix"    => "/usr/local",
+  "charset"   => "utf8",
+  "utf8-only" => true,
+  "clone_timeout" => 1200,
+  "ver2rev" => {
+    "0.996" => "64f8c11f4389d359aa3f0074d635e582dd69b6a9",
+    "0.995" => "fc62c8b70bcf46a367c10c8ed18ee0ba5ffd2066",
+    "0.994" => "ad914cb3a67fb0c976bac047a00b560d5a4ab714",
+    "0.993" => "9fc3d729b709a1a1843304683e46c951bb968597",
+    "0.991" => "368392d761b3f1ce6e7cedd249c0db45b4d15ef8",
+    "0.99"  => "d7ea460e8772245dcae3f46e6a1f8ed2d4f3a619"
   },
 }
 
 default["ipadic"] = {
   "version" => "2.7.0-20070801",
-  "support" => {
-    "2.7.0-20070801" => { "checksum" => "0d9d021853ba4bb4adfa782ea450e55bfe1a229b", "checksum_type" => :SHA1 }
+  "ver2rev" => {
+    "2.7.0-20070801" => "2fd29256c6d5e1b10211cac838069ee9ede8c77a",
+    "2.7.0-20070610" => "92ebc166ffb4cb472c3eb8469bdd004b2dbe87be",
+    "2.7.0-20060707" => "f3d32f5f66a46e29f1a7dcbd25163ec9d794edd8",
+    "2.7.0-20051110" => "e79030fdee058165935558a2d10d598539360089"
   }
 }
 
 default["jumandic"] = {
   "version" => "7.0-20130310",
-  "support" => {
-    "7.0-20130310" => { "checksum" => "db419d23b955bfaca1e2eea421e3ffa3a1fd3f72", "checksum_type" => :SHA1 }
+  "ver2rev" => {
+    "7.0-20130310" => "415f47d6119c4387a83e9f942e4ea2d47acf5bdc",
+    "5.1-20070304" => "5a7db65493a0b57d5fc31734e65300320aaf94c8"
   }
 }
 

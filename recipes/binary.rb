@@ -1,42 +1,44 @@
-supported_versions = node['mecab']['support'].keys
 version = node['mecab']['version']
-mecab_dl_site = node['dl_site']['mecab']
 
-src_filename_noext = "mecab-#{version}"
-src_filename = "#{src_filename_noext}.tar.gz"
-src_filepath = "#{mecab_dl_site}#{src_filename}"
-copy_to = "#{Chef::Config[:file_cache_path]}/#{src_filename}"
-
-checksum = node['mecab']['support'][version]['checksum']
-checksum_type = node['mecab']['support'][version]['checksum_type']
+if version == 'HEAD'
+  revision = 'HEAD'
+elsif node['mecab']['ver2rev'].has_key?(version)
+  revision = node['mecab']['ver2rev'][version]
+else
+  raise "Unsupported version string " + version + " for mecab"
+end
 
 configure_cmd = %W{
   ./configure
-  #{node['mecab']['conf']['prefix'] ? "--prefix=#{node['mecab']['conf']['prefix']}" : ""}
-  #{node['mecab']['conf']['charset'] ? "--with-charset=#{node['mecab']['conf']['charset']}" : ""}
-  #{node['mecab']['conf']['utf8-only'] ? '--enable-utf8-only' : ''}
+  #{node['mecab']['prefix'] ? "--prefix=#{node['mecab']['prefix']}" : ""}
+  #{node['mecab']['charset'] ? "--with-charset=#{node['mecab']['charset']}" : ""}
+  #{node['mecab']['utf8-only'] ? '--enable-utf8-only' : ''}
 }.join(' ')
 
-if not supported_versions.include?(version) then
-  Chef::Application.fatal!("#{recipe_name} doesn't support the version #{version}")
+if node[:platform] == "debian" and node[:platform_version] == "7.8" then
+  package 'libtool' do
+    action :install
+  end
 end
 
-remote_file 'download MeCab source' do
-  path copy_to
-  source src_filepath
-  mode '0644'
+git "cloning mecab repository for mecab app" do
+  destination "#{Chef::Config[:file_cache_path]}/mecab"
+  repository node['mecab']['git_repos']
+  revision revision
+  checkout_branch revision
+  enable_checkout false
+  action :export
+  timeout node['mecab']['clone_timeout']
   not_if 'which mecab'
-  not_if { no_need_to_copy?(checksum_type, copy_to, checksum) }
   notifies :run, 'execute[make && make install MeCab]', :immediately
 end
 
 execute 'make && make install MeCab' do
   action :nothing
-  cwd Chef::Config[:file_cache_path]
+  cwd "#{Chef::Config[:file_cache_path]}/mecab/mecab"
   command <<-EOD
-              tar -zxf #{src_filename}
-              cd #{src_filename_noext}
               #{configure_cmd}
+              mkdir m4 # workaround
               make
               make check
               make install
@@ -48,12 +50,12 @@ end
 ruby_block 'edit ld.so.conf' do
   action :nothing
   block do
-    p = "#{node['mecab']['conf']['prefix']}/lib"
+    p = "#{node['mecab']['prefix']}/lib"
     fe = Chef::Util::FileEdit.new('/etc/ld.so.conf')
     fe.insert_line_if_no_match(/p/, p)
     fe.write_file
   end
-  not_if "ldconfig -p | grep #{node['mecab']['conf']['prefix']}/local/lib"
+  not_if "ldconfig -p | grep #{node['mecab']['prefix']}/local/lib"
   not_if { !platform_family?('debian', 'rhel') }
   notifies :run, 'execute[ldconfig]', :immediately
 end
